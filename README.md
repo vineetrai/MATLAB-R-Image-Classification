@@ -1,5 +1,4 @@
-# wbc_ml
-Image Recognition and Machine Learning Classification of White Blood Cells
+# Image Recognition and Machine Learning Classification of White Blood Cells
 
 ```matlab
 I = imread(imagepath); % READ **IMAGEPATH** INTO ARRAY
