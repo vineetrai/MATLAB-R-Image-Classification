@@ -27,6 +27,13 @@ endfor
 ```
 
 ```matlab
+% fill holes in object and background
+Z = bwareaopen(Y,300);
+Z = bwareaopen(!Z,50);
+Z = !Z;
+```
+
+```matlab
 % Nucleus Recognition and Removal of Other Objects
 A = imsmooth(Z,"Gaussian",2); % merge pixels belonging to each "object"
 tmp = bwlabel(A); % label pixels of each object by object's number
