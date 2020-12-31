@@ -1,29 +1,8 @@
----
-title: "Image Classification of White Blood Cells"
-author: "Vineet Rai"
-date: "December 31, 2020"
-output: pdf_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo = TRUE,
-	message = TRUE,
-	warning = TRUE
-)
-```
-
-```{r}
 library(tidyverse)
-library(xtable)
-```
 
-```{r}
 headers <- read_csv("headers.csv", col_names = FALSE) %>% t() %>% as.vector()
 data <- read_csv("data.csv", col_names = headers)
-```
 
-```{r}
 # set train fraction value
 f = 0.10
 
@@ -43,12 +22,7 @@ test.idx = (1:n)[-train.idx]
 unscaled.data = data
 tmp = data %>% select(-celltype) %>% scale() %>% as_tibble()
 data[,1:13] = tmp
-
 attach(data)
-```
-
-```{r}
-# use k-nearest neighbors algorithm
 
 # separate predictor variables from response variable
 train.X = data[train.idx,] %>% select(-celltype)
@@ -56,11 +30,11 @@ test.X = data[test.idx,] %>% select(-celltype)
 train.Y = celltype[train.idx]
 test.Y = celltype[test.idx]
 
+# use k-nearest neighbors algorithm
 library(class)
 knn.pred = knn(train.X, test.X, train.Y, k = 1)
-```
 
-```{r}
+
 # Get confusion matrix to see hits and misses
 table(knn.pred, test.Y)
 # knn.pred lymp mono neut
@@ -71,5 +45,3 @@ table(knn.pred, test.Y)
 # Get test accuracy
 sum(knn.pred == test.Y) / length(test.Y)
 # [1] 0.9285714
-```
-
