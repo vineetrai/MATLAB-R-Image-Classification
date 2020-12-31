@@ -1,4 +1,4 @@
-# Image Classification of White Blood Cells with Machine Learning
+# Image Classification of White Blood Cells with Few Examples
 
 ```matlab
 I = imread(imagepath); % READ **IMAGEPATH** INTO ARRAY
