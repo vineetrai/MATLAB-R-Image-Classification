@@ -1,6 +1,8 @@
 # Image Classification of White Blood Cells with Few Examples
 
 ```matlab
+% GNU Octave / MATLAB languages
+
 I = imread(imagepath); % READ **IMAGEPATH** INTO ARRAY
 J = rgb2hsv(I)(:,:,2); % convert from rgb to hsv and select channel 2
 K = imsmooth(J,"P&M",1); % smoothing with anisotropic diffusion
@@ -66,6 +68,7 @@ data(13) = entropy(F);
 ```
 
 ```r
+# R language
 library(tidyverse)
 
 headers <- read_csv("headers.csv", col_names = FALSE) %>% t() %>% as.vector()
